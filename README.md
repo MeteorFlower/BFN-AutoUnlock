@@ -1,7 +1,7 @@
 # BFN AutoUnlock - source code
 
 Source for the DLL and the injector shipped with the Nexus release
-**"AutoUnlock"** for *Plants vs. Zombies: Battle for Neighborville*.
+**"One-Click Unlock All Items"** for *Plants vs. Zombies: Battle for Neighborville*.
 
 This repository exists so that anyone - players, and Nexus Mods staff reviewing
 the upload - can read exactly what the files do before running them.
@@ -10,14 +10,15 @@ the upload - can read exactly what the files do before running them.
 
 ## ⚠️ Read this before anything else: the Base Mod is required
 
-AutoUnlock does not work on its own. It needs the Base Mod already installed:
+One-Click Unlock All Items does not work on its own. It needs the Base Mod
+already installed:
 
 <https://github.com/MeteorFlower/BFN-Base-Mod-DLL>
 
 The Base Mod is what lets the game reach a map. Without it the game never gets
 that far, and **granting then fails silently: no error, nothing granted, and
-the log looks completely normal.** This is by far the most common way AutoUnlock
-appears to be broken.
+the log looks completely normal.** This is by far the most common way
+One-Click Unlock All Items appears to be broken.
 
 ---
 
