@@ -73,8 +73,17 @@ binary.
 from its own folder at runtime.
 
 The release zip is flat: those two plus the three helper files in one folder.
-The injector expects to find the DLL and `items.txt` beside it, so they cannot
-be separated.
+
+**The injector only looks next to itself.** `inject_autounlock.py` resolves the
+DLL as `<its own folder>/AutoUnlock.dll` and `items.txt` from the same place; it
+never searches anywhere else. In this repository that pair is split - the
+scripts live in `helper-scripts/` while the DLL builds into `src/` - so running
+`helper-scripts/inject_one_key.bat` straight from a checkout will stop with
+`DLL not found`. That is expected, not a bug.
+
+If you want to run it from a checkout, copy `AutoUnlock.dll` and `items.txt`
+in beside the scripts first. (The "run build.bat first" hint the script prints
+refers to the release layout, where they are already together.)
 
 ---
 
