@@ -60,7 +60,7 @@ line.** There is no obfuscation, no download, no encoded blob.
 | `helper-scripts/inject_one_key.bat` | Double-click this one. Asks for admin, injects, verifies. |
 | `helper-scripts/_run_inject.bat` | Inner runner, called by the above. |
 | `helper-scripts/inject_autounlock.py` | The injector itself. |
-| `items.txt` | The unlock list. 6612 entries, one per line, editable. |
+| `src/items.txt` | The unlock list. 6612 entries, one per line, editable. |
 
 ### Getting the files
 
@@ -68,9 +68,13 @@ Either take them from the **Releases** page of this repository, or build the DLL
 yourself from `src/` - see [Building](#building). There is no single canonical
 binary.
 
-The release is flat: `AutoUnlock.dll`, `items.txt` and the three helper files in
-one folder. The injector expects to find the DLL and `items.txt` beside it, so
-they cannot be separated.
+`items.txt` sits in `src/` so that building there leaves `AutoUnlock.dll` and
+`items.txt` side by side - that pair is the mod, and the DLL reads `items.txt`
+from its own folder at runtime.
+
+The release zip is flat: those two plus the three helper files in one folder.
+The injector expects to find the DLL and `items.txt` beside it, so they cannot
+be separated.
 
 ---
 
