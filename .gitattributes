@@ -1,0 +1,12 @@
+# Force CRLF for batch files regardless of the cloner's core.autocrlf setting.
+# Batch files with LF-only line endings break in subtle ways - labels and
+# `goto` can misbehave - so this must not depend on local git configuration.
+*.bat   text eol=crlf
+
+# Everything else can be normalised.
+*.cpp   text
+*.md    text
+*.txt   text
+
+# Binaries must never be line-ending normalised.
+*.dll   binary

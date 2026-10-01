@@ -1,0 +1,29 @@
+# Build output
+obj/
+*.obj
+src/AutoUnlock.dll
+
+# MSVC
+*.pdb
+*.ilk
+*.exp
+*.lib
+.vs/
+
+# The game executables / IDA databases / asset dumps must never be committed.
+# They are EA's property and have nothing to do with this source.
+*.exe
+*.i64
+*.idb
+*.dll
+
+# Build output. Released binaries live on the Releases page, not in the repo.
+dist/
+
+# Logs
+*.log
+unlock_log*.txt
+
+# Python
+__pycache__/
+*.pyc
