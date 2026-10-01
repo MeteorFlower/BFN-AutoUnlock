@@ -57,7 +57,7 @@ line.** There is no obfuscation, no download, no encoded blob.
 |---|---|
 | `src/AutoUnlock.cpp` | The DLL source, 490 lines. |
 | `src/build.bat` | Builds it with MSVC. |
-| `helper-scripts/inject_one_key.bat` | Double-click this one. Asks for admin, injects, verifies. |
+| `helper-scripts/inject_main.bat` | Double-click this one. Asks for admin, injects, verifies. |
 | `helper-scripts/_run_inject.bat` | Inner runner, called by the above. |
 | `helper-scripts/inject_autounlock.py` | The injector itself. |
 | `src/items.txt` | The unlock list. 6612 entries, one per line, editable. |
@@ -78,7 +78,7 @@ The release zip is flat: those two plus the three helper files in one folder.
 DLL as `<its own folder>/AutoUnlock.dll` and `items.txt` from the same place; it
 never searches anywhere else. In this repository that pair is split - the
 scripts live in `helper-scripts/` while the DLL builds into `src/` - so running
-`helper-scripts/inject_one_key.bat` straight from a checkout will stop with
+`helper-scripts/inject_main.bat` straight from a checkout will stop with
 `DLL not found`. That is expected, not a bug.
 
 If you want to run it from a checkout, copy `AutoUnlock.dll` and `items.txt`
@@ -196,10 +196,10 @@ interpreter. `_run_inject.bat` calls `python` by name, so Python has to be on
 <https://www.python.org/downloads/windows/>
 
 During setup, tick **"Add python.exe to PATH"**. The Microsoft Store build works
-too and adds itself. If Python is missing, `inject_one_key.bat` says so and
+too and adds itself. If Python is missing, `inject_main.bat` says so and
 stops rather than opening a window that disappears.
 
-`inject_one_key.bat` asks for administrator rights - `OpenProcess` on the game
+`inject_main.bat` asks for administrator rights - `OpenProcess` on the game
 fails without them - and then runs the injector. The window closes by itself
 when it succeeds; it only stays open if something failed, so you can read why.
 

@@ -8,7 +8,7 @@ identical from the outside. This script injects the DLL itself and then
 verifies the result by watching the log file the DLL writes.
 
 Usage:
-    python inject_autounlock.py       (or double-click inject_one_key.bat)
+    python inject_autounlock.py       (or double-click inject_main.bat)
 
 It will:
   1. find PVZBattleforNeighborville.exe
