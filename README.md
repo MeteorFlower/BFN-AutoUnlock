@@ -187,6 +187,18 @@ disconnect does not cost you the whole list.
 
 ## The helper scripts
 
+**Python is required.** The injector is a Python script. It uses nothing but the
+standard library - no `pip install` of any kind - but it must be **64-bit**,
+because the game is 64-bit and the script refuses to run from a 32-bit
+interpreter. `_run_inject.bat` calls `python` by name, so Python has to be on
+`PATH`.
+
+<https://www.python.org/downloads/windows/>
+
+During setup, tick **"Add python.exe to PATH"**. The Microsoft Store build works
+too and adds itself. If Python is missing, `inject_one_key.bat` says so and
+stops rather than opening a window that disappears.
+
 `inject_one_key.bat` asks for administrator rights - `OpenProcess` on the game
 fails without them - and then runs the injector. The window closes by itself
 when it succeeds; it only stays open if something failed, so you can read why.
