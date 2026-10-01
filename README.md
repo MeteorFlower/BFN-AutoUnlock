@@ -188,11 +188,12 @@ disconnect does not cost you the whole list.
 
 ## The helper scripts
 
-**Python is required.** The injector is a Python script. It uses nothing but the
-standard library - no `pip install` of any kind - but it must be **64-bit**,
-because the game is 64-bit and the script refuses to run from a 32-bit
-interpreter. `_run_inject.bat` calls `python` by name, so Python has to be on
-`PATH`.
+**Python is required only for our injector.** `AutoUnlock.dll` itself is an
+ordinary DLL, so any injector works - Cheat Engine, or whatever you already
+have. If you use ours, it is a Python script: standard library only, no
+`pip install`, but it must be **64-bit**, because the game is, and the script
+refuses to run from a 32-bit interpreter. `_run_inject.bat` calls `python` by
+name, so Python has to be on `PATH`.
 
 <https://www.python.org/downloads/windows/>
 
