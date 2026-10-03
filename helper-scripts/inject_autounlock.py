@@ -8,7 +8,9 @@ identical from the outside. This script injects the DLL itself and then
 verifies the result by watching the log file the DLL writes.
 
 Usage:
-    python inject_autounlock.py       (or double-click inject_main.bat)
+    double-click inject_main.bat    (asks for administrator rights)
+    or: inject_autounlock.exe       (same thing, no Python needed on the machine)
+    or: python inject_autounlock.py   (development)
 
 It will:
   1. find PVZBattleforNeighborville.exe
@@ -26,7 +28,17 @@ import sys
 import time
 from ctypes import wintypes
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+# Where does "next to this program" mean?
+#
+#   Running as a script: next to the .py file.
+#   Running as the packaged exe (PyInstaller onefile): __file__ points into the
+#   temp extraction folder (%TEMP%\_MEIxxxx), so the DLL and the log have to be
+#   resolved from the exe itself. Without this branch the exe would look for
+#   AutoUnlock.dll inside that temp folder and report "DLL not found".
+if getattr(sys, "frozen", False):
+    HERE = os.path.dirname(os.path.abspath(sys.executable))
+else:
+    HERE = os.path.dirname(os.path.abspath(__file__))
 DLL = os.path.join(HERE, "AutoUnlock.dll")
 LOG = os.path.join(HERE, "unlock_log.txt")
 EXE_NAME = "PVZBattleforNeighborville.exe"
@@ -172,7 +184,8 @@ def main():
         h = k32.OpenProcess(MINIMAL_RIGHTS, False, pid)
         if not h:
             print("[X] OpenProcess(minimal) failed, err=%d" % ctypes.get_last_error())
-            print("    -> run this script from an Administrator command prompt.")
+            print("    -> this program has to run elevated. Use inject_main.bat (it asks")
+            print("       for administrator rights), or start it from an admin prompt.")
             return 1
         print("[*] minimal rights accepted")
     else:
