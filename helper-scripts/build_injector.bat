@@ -4,7 +4,7 @@ REM  Build inject_autounlock.exe (PyInstaller, onefile, console).
 REM
 REM  Why: the injector used to need Python installed on the player's
 REM  machine. This packs the interpreter into the exe, so players
-REM  only need the exe itself. _run_inject.bat prefers the exe and
+REM  only need the exe itself. inject_main.bat prefers the exe and
 REM  falls back to the .py on a machine that has Python.
 REM
 REM  Dev machine only: needs python + pyinstaller.

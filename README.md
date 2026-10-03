@@ -67,8 +67,7 @@ bytes.
 |---|---|
 | `src/AutoUnlock.cpp` | The DLL source, 490 lines. |
 | `src/build.bat` | Builds it with MSVC. |
-| `helper-scripts/inject_main.bat` | Double-click this one. Asks for admin, injects, verifies. |
-| `helper-scripts/_run_inject.bat` | Inner runner, called by the above. It runs the exe when present. |
+| `helper-scripts/inject_main.bat` | Double-click this one. Asks for admin, runs the injector, verifies. |
 | `helper-scripts/inject_autounlock.py` | The injector's source. The exe that ships is built from it. |
 | `helper-scripts/build_injector.bat` | Builds `inject_autounlock.exe` from that source. |
 | `src/items.txt` | The unlock list. 6612 entries, one per line, editable. |
@@ -88,8 +87,8 @@ plain checkout has neither.
 `items.txt` side by side - that pair is the mod, and the DLL reads `items.txt`
 from its own folder at runtime.
 
-The release zip is flat: `AutoUnlock.dll` and `items.txt`, plus the three
-helper files `inject_main.bat`, `_run_inject.bat` and `inject_autounlock.exe`,
+The release zip is flat: `AutoUnlock.dll` and `items.txt`, plus the two
+helper files `inject_main.bat` and `inject_autounlock.exe`,
 in one folder. The injector's source and its build script stay in the
 repository; the zip carries the finished exe.
 
@@ -224,7 +223,7 @@ expected to run. The exe is the injector that ships.
 
 Building it needs Python 3 (64-bit) and PyInstaller on the build machine; run
 `helper-scripts/build_injector.bat` and it lands next to the script.
-`_run_inject.bat` uses the exe when it is present and falls back to the script
+`inject_main.bat` uses the exe when it is present and falls back to the script
 otherwise - that fallback exists for development, and it is the only case where
 Python is needed. <https://www.python.org/downloads/windows/>
 
@@ -243,11 +242,6 @@ when it succeeds; it only stays open if something failed, so you can read why.
 `inject_autounlock.py` is the injector. It declares every Win32 function it
 calls, so ctypes cannot silently truncate a 64-bit pointer, and it verifies the
 injection by reading the log the DLL writes rather than assuming it worked.
-
-`_run_inject.bat` is the small runner the first script calls. It is separate so
-that the elevated window can run the injector and come back. It prefers
-`inject_autounlock.exe` and only falls back to the Python script when the exe is
-not there.
 
 ---
 
